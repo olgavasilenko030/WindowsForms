@@ -16,11 +16,12 @@ namespace Clock
 		{
 			InitializeComponent();
 			labelTime.BackColor = Color.AliceBlue;
-		
+			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
 		}
 		void SetVisibility(bool visible)
 		{
 			cbShowDate.Visible = visible;
+			cbShowWeekday.Visible = visible;
 			btnHideControls.Visible = visible;
 			this.TransparencyKey = visible ? Color.Empty : this.BackColor;
 			this.FormBorderStyle = visible ? FormBorderStyle.FixedToolWindow : FormBorderStyle.None;
@@ -36,7 +37,7 @@ namespace Clock
 				labelTime.Text += "\n";
 				labelTime.Text += DateTime.Now.ToString("yyyy.MM.dd");//"d"  дата по умолчанию
 			}
-			if (cbShowWeekDay.Checked)
+			if (cbShowWeekday.Checked)
 			{
 				labelTime.Text += "\n";
 				labelTime.Text += DateTime.Now.DayOfWeek;
@@ -64,6 +65,46 @@ namespace Clock
 		private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
 		{
 
+		}
+
+		private void cmExit_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void cmTopmost_CheckedChanged(object sender, EventArgs e)
+		{
+			this.TopMost= cmTopmost.Checked;
+		}
+
+		private void cmShowDate_CheckedChanged(object sender, EventArgs e)
+		{
+			cbShowDate.Checked = cmShowDate.Checked;
+		}
+
+		private void cbShowDate_CheckedChanged(object sender, EventArgs e)
+		{
+			cmShowDate.Checked = cbShowDate.Checked;
+		}
+
+		private void cmShowWeekday_CheckedChanged(object sender, EventArgs e)
+		{
+			cbShowWeekday.Checked = cmShowWeekday.Checked;	
+		}
+
+		private void cbShowWeekDay_CheckedChanged(object sender, EventArgs e)
+		{
+			cmShowWeekday.Checked = cbShowWeekday.Checked;
+		}
+
+		private void notifyIcon_DoubleClick(object sender, EventArgs e)
+		{
+			if (!this.TopMost)
+			{
+				this.TopMost = true;
+				this.TopMost = false;
+
+			}
 		}
 	}
 }
