@@ -41,7 +41,7 @@ namespace Clock
 				labelTime.Text += "\n";
 				labelTime.Text += DateTime.Now.DayOfWeek;
 			}
-
+			notifyIcon.Text = "";
 			notifyIcon.Text = labelTime.Text;
 		}
 		private void btnHideControls_Click(object sender, EventArgs e)
