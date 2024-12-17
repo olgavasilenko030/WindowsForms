@@ -17,6 +17,7 @@ namespace Clock
 			InitializeComponent();
 			labelTime.BackColor = Color.AliceBlue;
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
+			SetVisibility(false);
 		}
 		void SetVisibility(bool visible)
 		{
@@ -47,7 +48,8 @@ namespace Clock
 		}
 		private void btnHideControls_Click(object sender, EventArgs e)
 		{
-			SetVisibility(false);
+			SetVisibility(cmShowControls.Checked=false);
+			//cmShowControls.Checked = false;
 		}
 
 		private void labelTime_DoubleClick(object sender, EventArgs e)
@@ -59,7 +61,7 @@ namespace Clock
 			//	MessageBoxButtons.OK,
 			//	MessageBoxIcon.Information
 			//	);
-			SetVisibility(true);
+			SetVisibility(cmShowControls.Checked=true);
 		}
 
 		private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -106,5 +108,39 @@ namespace Clock
 
 			}
 		}
+
+		private void cmShowControls_CheckedChanged(object sender, EventArgs e)
+		{
+			SetVisibility(cmShowControls.Checked);
+
+		}
+
+		private void SetColor(object sender, EventArgs e)
+		{
+			ColorDialog dialog= new ColorDialog();
+			//dialog.Color = labelTime.BackColor;
+			switch ((sender as ToolStripMenuItem).Text)//as -это оператор преобразования типа
+			//switch(((ToolStripMenuItem)sender)
+				//Оператор 'as' значение слева приводит к типу справа
+			
+			{
+				case "Background color":   dialog.Color=labelTime.BackColor; break;
+				case "Foreground color":   dialog.Color= labelTime.ForeColor; break;
+			}
+
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{ 
+				switch((sender as ToolStripMenuItem).Text)
+				{
+					case "Background color":labelTime.BackColor=dialog.Color; break;
+					case "Foreground color":labelTime.ForeColor=dialog.Color; break;
+				}
+			}
+		}
+	
+	//smallCamel
+	//BigCamel
+	//snake_case
+	//SNAKE_CASE
 	}
 }
