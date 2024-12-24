@@ -69,7 +69,7 @@ namespace Clock
 			string font_name = sr.ReadLine();
 			int font_size = Convert.ToInt32(sr.ReadLine());
 			sr.Close();
-			fontDialog = new ChooseFontForm(font_name, font_size);
+			fontDialog = new ChooseFontForm(this,font_name, font_size);
 			labelTime.Font = fontDialog.Font;
 		}
 		private void timer_Tick(object sender, EventArgs e)
@@ -161,6 +161,7 @@ namespace Clock
 		private void SetColor(object sender, EventArgs e)
 		{
 			ColorDialog dialog= new ColorDialog();
+
 			//dialog.Color = labelTime.BackColor;
 			switch ((sender as ToolStripMenuItem).Text)//as -это оператор преобразования типа
 			//switch(((ToolStripMenuItem)sender)
