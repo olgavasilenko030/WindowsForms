@@ -44,15 +44,16 @@
 			this.cmBackColor = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmForeColor = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.cmExit = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmLoadonWinStartup = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.cmExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.cmAlarms = new System.Windows.Forms.ToolStripMenuItem();
 			this.timer = new System.Windows.Forms.Timer(this.components);
 			this.cbShowDate = new System.Windows.Forms.CheckBox();
 			this.btnHideControls = new System.Windows.Forms.Button();
 			this.cbShowWeekday = new System.Windows.Forms.CheckBox();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-			this.cmLoadonWinStartup = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -83,12 +84,13 @@
             this.cmChooseFont,
             this.cmColors,
             this.toolStripSeparator3,
+            this.cmAlarms,
+            this.toolStripSeparator5,
             this.cmLoadonWinStartup,
             this.toolStripSeparator4,
-            this.cmExit,
-            this.toolStripSeparator5});
+            this.cmExit});
 			this.contextMenu.Name = "contextMenu";
-			this.contextMenu.Size = new System.Drawing.Size(244, 278);
+			this.contextMenu.Size = new System.Drawing.Size(244, 302);
 			// 
 			// cmTopmost
 			// 
@@ -175,6 +177,19 @@
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(240, 6);
 			// 
+			// cmLoadonWinStartup
+			// 
+			this.cmLoadonWinStartup.CheckOnClick = true;
+			this.cmLoadonWinStartup.Name = "cmLoadonWinStartup";
+			this.cmLoadonWinStartup.Size = new System.Drawing.Size(243, 24);
+			this.cmLoadonWinStartup.Text = "Load onWindows startup";
+			this.cmLoadonWinStartup.CheckedChanged += new System.EventHandler(this.cmLoadonWinStartup_CheckedChanged);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(240, 6);
+			// 
 			// cmExit
 			// 
 			this.cmExit.Name = "cmExit";
@@ -182,15 +197,17 @@
 			this.cmExit.Text = "Exit";
 			this.cmExit.Click += new System.EventHandler(this.cmExit_Click);
 			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(240, 6);
-			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(240, 6);
+			// 
+			// cmAlarms
+			// 
+			this.cmAlarms.Name = "cmAlarms";
+			this.cmAlarms.Size = new System.Drawing.Size(243, 24);
+			this.cmAlarms.Text = "Alarm";
+			this.cmAlarms.Click += new System.EventHandler(this.cmAlarm_Click);
 			// 
 			// timer
 			// 
@@ -240,14 +257,6 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
 			// 
-			// cmLoadonWinStartup
-			// 
-			this.cmLoadonWinStartup.CheckOnClick = true;
-			this.cmLoadonWinStartup.Name = "cmLoadonWinStartup";
-			this.cmLoadonWinStartup.Size = new System.Drawing.Size(243, 24);
-			this.cmLoadonWinStartup.Text = "Load onWindows startup";
-			this.cmLoadonWinStartup.CheckedChanged += new System.EventHandler(this.cmLoadonWinStartup_CheckedChanged);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -294,6 +303,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cmChooseFont;
 		private System.Windows.Forms.ToolStripMenuItem cmShowConsole;
 		private System.Windows.Forms.ToolStripMenuItem cmLoadonWinStartup;
+		private System.Windows.Forms.ToolStripMenuItem cmAlarms;
 	}
 }
 

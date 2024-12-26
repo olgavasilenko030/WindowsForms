@@ -18,6 +18,7 @@ namespace Clock
 	{
 		
 		ChooseFontForm fontDialog =null;
+		AlarmsFom alarms=null;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -28,6 +29,7 @@ namespace Clock
 			cmShowConsole.Checked = true;
 			LoadSettings();
 			//fontDialog = new ChooseFontForm();
+			alarms = new AlarmsFom();
 		}
 		void SetVisibility(bool visible)
 		{
@@ -212,6 +214,13 @@ namespace Clock
 			if (cmLoadonWinStartup.Checked) rk.SetValue(key_name, Application.ExecutablePath);
 			else rk.DeleteValue(key_name, false);
 			rk.Dispose();
+		}
+
+		private void cmAlarm_Click(object sender, EventArgs e)
+		{
+			alarms.StartPosition = FormStartPosition.Manual;
+			alarms.Location = new Point(this.Location.X-alarms.Width, this.Location.Y);
+			alarms.ShowDialog();
 		}
 
 		//smallCamel
