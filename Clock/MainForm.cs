@@ -19,6 +19,7 @@ namespace Clock
 		
 		ChooseFontForm fontDialog =null;
 		AlarmsFom alarms=null;
+		Alarm nextAlarm = null;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -30,7 +31,9 @@ namespace Clock
 			LoadSettings();
 			//fontDialog = new ChooseFontForm();
 			alarms = new AlarmsFom();
+			//Console.WriteLine(DateTime.MinValue);
 		}
+		
 		void SetVisibility(bool visible)
 		{
 			cbShowDate.Visible = visible;
@@ -90,6 +93,10 @@ namespace Clock
 			}
 		
 			notifyIcon.Text = labelTime.Text;
+
+			if (alarms.LB_Alarms.Items.Count > 0) nextAlarm = alarms.LB_Alarms.Items.Cast<Alarm>().ToArray().Min();
+			
+			if (nextAlarm!=null) Console.WriteLine(nextAlarm);
 		}
 		private void btnHideControls_Click(object sender, EventArgs e)
 		{
