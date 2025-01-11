@@ -18,6 +18,7 @@ namespace Clock
 		{
 			InitializeComponent();
 			dtpDate.Enabled = false;
+			dtpTime.Value = DateTime.Now;
 			Alarm= new Alarm();
 			open = new OpenFileDialog();
 			open.Filter = "All sound files (*.mp3,*.wav,*.flac)|*mp3;*.wav;*.flac|MP-3(*.mp3)|*.mp3|WAV (*.wav)|*.wav|Flac(*.flac)|*.flac";

@@ -77,6 +77,15 @@ namespace Clock
 			fontDialog = new ChooseFontForm(this,font_name, font_size);
 			labelTime.Font = fontDialog.Font;
 		}
+		Alarm FindNextAlarm()
+		{
+			Alarm[] actualAlarms =
+				alarms.LB_Alarms.Items.Cast<Alarm>().Where(a => a.Time > DateTime.Now.TimeOfDay).ToArray();
+
+			//Alarm nextAlarm =  new Alarm(actualAlarms.Min()); // new Alarm (alarms.LB_Alarms.Items.Cast<Alarm>().ToArray().Min());
+			//return nextAlarm;
+			return actualAlarms.Min();
+		}
 		private void timer_Tick(object sender, EventArgs e)
 		{
 			labelTime.Text = DateTime.Now.ToString("hh:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture); //"HH:mm:ss" В 24 часовом формате
@@ -94,7 +103,7 @@ namespace Clock
 		
 			notifyIcon.Text = labelTime.Text;
 
-			if (alarms.LB_Alarms.Items.Count > 0) nextAlarm = alarms.LB_Alarms.Items.Cast<Alarm>().ToArray().Min();
+			if (alarms.LB_Alarms.Items.Count > 0) nextAlarm = FindNextAlarm(); //nextAlarm = alarms.LB_Alarms.Items.Cast<Alarm>().ToArray().Min();
 			
 			if (nextAlarm!=null) Console.WriteLine(nextAlarm);
 		}
